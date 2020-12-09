@@ -1,0 +1,3 @@
+﻿  Dummy.cpp
+D:\Documents\ФМИ\1 курс\1 семестър\УП\Eli\Homework 1\Dummy\Dummy.cpp(9,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Dummy.vcxproj -> D:\Documents\ФМИ\1 курс\1 семестър\УП\Eli\Homework 1\Debug\Dummy.exe

@@ -1,0 +1,3 @@
+﻿  Dom1.cpp
+C:\Users\Zalman\Desktop\Dom1.cpp(28,10): warning C4244: '=': conversion from 'long double' to 'int', possible loss of data
+  ConsoleApplication1.vcxproj -> D:\Documents\ФМИ\1 курс\1 семестър\УП\Eli\Homework 1\Debug\SquareRoot.exe

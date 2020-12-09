@@ -1,0 +1,11 @@
+﻿  BinaryClockNoLoop.cpp
+D:\Documents\ФМИ\1 курс\1 семестър\УП\Домашно 1\BinaryClockNoLoop\BinaryClockNoLoop.cpp(33,29): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
+D:\Documents\ФМИ\1 курс\1 семестър\УП\Домашно 1\BinaryClockNoLoop\BinaryClockNoLoop.cpp(38,29): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
+D:\Documents\ФМИ\1 курс\1 семестър\УП\Домашно 1\BinaryClockNoLoop\BinaryClockNoLoop.cpp(43,28): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
+D:\Documents\ФМИ\1 курс\1 семестър\УП\Домашно 1\BinaryClockNoLoop\BinaryClockNoLoop.cpp(48,28): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+D:\Documents\ФМИ\1 курс\1 семестър\УП\Домашно 1\BinaryClockNoLoop\BinaryClockNoLoop.cpp(69,29): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
+D:\Documents\ФМИ\1 курс\1 семестър\УП\Домашно 1\BinaryClockNoLoop\BinaryClockNoLoop.cpp(74,29): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
+D:\Documents\ФМИ\1 курс\1 семестър\УП\Домашно 1\BinaryClockNoLoop\BinaryClockNoLoop.cpp(79,28): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
+D:\Documents\ФМИ\1 курс\1 семестър\УП\Домашно 1\BinaryClockNoLoop\BinaryClockNoLoop.cpp(84,28): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+D:\Documents\ФМИ\1 курс\1 семестър\УП\Домашно 1\BinaryClockNoLoop\BinaryClockNoLoop.cpp(128,19): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  BinaryClockNoLoop.vcxproj -> D:\Documents\ФМИ\1 курс\1 семестър\УП\Домашно 1\Debug\BinaryClockNoLoop.exe

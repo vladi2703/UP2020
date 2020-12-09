@@ -1,0 +1,4 @@
+﻿  Разлика_В_Дати.cpp
+D:\Documents\ФМИ\1 курс\1 семестър\УП\Домашно 1\Разлика_В_Дати\Разлика_В_Дати.cpp(12,38): warning C4101: 'secondsPast2': unreferenced local variable
+D:\Documents\ФМИ\1 курс\1 семестър\УП\Домашно 1\Разлика_В_Дати\Разлика_В_Дати.cpp(12,24): warning C4101: 'secondsPast1': unreferenced local variable
+  Разлика_В_Дати.vcxproj -> D:\Documents\ФМИ\1 курс\1 семестър\УП\Домашно 1\Debug\Разлика_В_Дати.exe

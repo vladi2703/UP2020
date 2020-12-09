@@ -1,0 +1,5 @@
+﻿  BinaryClock.cpp
+D:\Documents\ФМИ\1 курс\1 семестър\УП\Домашно 1\Binary Clock\BinaryClock.cpp(66,29): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+D:\Documents\ФМИ\1 курс\1 семестър\УП\Домашно 1\Binary Clock\BinaryClock.cpp(67,29): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+D:\Documents\ФМИ\1 курс\1 семестър\УП\Домашно 1\Binary Clock\BinaryClock.cpp(84,14): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  Binary Clock.vcxproj -> D:\Documents\ФМИ\1 курс\1 семестър\УП\Домашно 1\Debug\Binary Clock.exe

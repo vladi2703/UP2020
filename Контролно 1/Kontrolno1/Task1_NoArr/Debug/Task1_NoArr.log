@@ -1,0 +1,4 @@
+﻿  Task1_NoArr.cpp
+D:\Documents\ФМИ\1 курс\1 семестър\УП\Контролно 1\Kontrolno1\Task1_NoArr\Task1_NoArr.cpp(6,10): warning C4101: 'digit2': unreferenced local variable
+D:\Documents\ФМИ\1 курс\1 семестър\УП\Контролно 1\Kontrolno1\Task1_NoArr\Task1_NoArr.cpp(7,14): warning C4101: 'b2': unreferenced local variable
+  Task1_NoArr.vcxproj -> D:\Documents\ФМИ\1 курс\1 семестър\УП\Контролно 1\Kontrolno1\Debug\Task1_NoArr.exe
