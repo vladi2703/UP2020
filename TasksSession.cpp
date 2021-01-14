@@ -10,12 +10,12 @@ void printMatrix(double** matrix, int height, int width)
         std::cout << '\n';
     }
 }
-void printCompleteTasks(double** matrix, int size)
+void printCompleteTasks(int* matrix, int size)
 {
     std::cout << "Tasks: ";
-    for (int i = size; i >= 0; i--)
+    for (int i = 0; i < size; i++)
     {
-        std::cout << matrix[i][0] << ' ';
+        std::cout << matrix[i] << ' ';
     }
     std::cout << '\n';
 }
@@ -41,15 +41,22 @@ void sortTasks(double** taskChar, int taskCount)
 
 
 }
-int distributeTasks(double** taskChar, int totalTime, int* counter, int tasksCount)
+int distributeTasks(double** taskChar, int totalTime, int* counter, int tasksCount, int* completedTasks, int *completedCounter) //completedCounter -> counter to fill the array of completed tasks; counter -> to go thru all the tasks
 {
-    if (*counter >= tasksCount || totalTime < int(taskChar[*counter][1]))
+    if (*counter < 0 || totalTime == 0)
     {
         return totalTime;
     }
+    if (totalTime < int(taskChar[*counter][1]))
+    {
+        *counter -= 1;
+      return  distributeTasks(taskChar, totalTime, counter, tasksCount, completedTasks, completedCounter);
+    }
     totalTime -= int(taskChar[*counter][1]);
-    *counter += 1;
-    distributeTasks(taskChar, totalTime, counter, tasksCount);
+    completedTasks[*completedCounter] = int(taskChar[*counter][0]);
+    *counter -= 1;
+    *completedCounter += 1;
+    return distributeTasks(taskChar, totalTime, counter, tasksCount, completedTasks, completedCounter);
 }
 void weightCalculation(double** taskChar, int* minutesPerDay, int daysLeft, int tasksCount, int* totalTime)
 {
@@ -82,21 +89,24 @@ int main()
     {
         std::cin >> minutesPerDay[i];
     }
+    int* completedTasks = new int[tasksCount];
 
     int totalTime, timeRemaining;
-    int tasksComplete = 0;
-    
+    int counter = tasksCount-1; //counter->to go thru all the tasks
+    int completedCounter = 0; //completedCounter -> counter to fill the array of completed tasks
     weightCalculation(taskChar, minutesPerDay, daysLeft, tasksCount, &totalTime);
     sortTasks(taskChar, tasksCount);
-    timeRemaining = distributeTasks(taskChar, totalTime, &tasksComplete, tasksCount);
-    tasksComplete--; //recursion adds 1 before return
+    timeRemaining = distributeTasks(taskChar, totalTime, &counter, tasksCount, completedTasks, &completedCounter);
     int minutes = timeRemaining % 60; 
     int hours = timeRemaining/60; 
-    printCompleteTasks(taskChar, tasksComplete);
-    std::cout << "Time remaining " << hours << ':' << minutes << std::endl;
-
-    //std::cout << distributeTasks(taskChar, totalTime, 0, tasksCount) << std::endl;
-   printMatrix(taskChar, tasksCount, 4);
+    printCompleteTasks(completedTasks, completedCounter);
+    std::cout << "Time remaining " << hours << ':' << minutes << std::endl;;
+   // printMatrix(taskChar, tasksCount, 4);
+    delete[] completedTasks;
+    delete[] minutesPerDay;
+    for (int i = 0; i < tasksCount; i++)
+    {
+        delete[] taskChar[i];
+    }
+    delete[] taskChar; 
 }
-
-//TODO: AKO NE SA PODREDENI PO VREME - PURVI PRIMER
