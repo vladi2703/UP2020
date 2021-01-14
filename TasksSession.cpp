@@ -67,10 +67,10 @@ int main()
 {
     int tasksCount, daysLeft;
     std::cin >> tasksCount;
-    double** taskChar = new double*[tasksCount];
+    double** taskChar = new double*[tasksCount];    //every task on a diff line
     for (int i = 0; i < tasksCount; i++)
     {
-        taskChar[i] = new double[4];
+        taskChar[i] = new double[4];    //task characteristics
         for (int j = 0; j < 3; j++)
         {
             std::cin >> taskChar[i][j];
