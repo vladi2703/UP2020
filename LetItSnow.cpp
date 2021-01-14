@@ -9,11 +9,11 @@ void snow(int, int, int);
 void print(char**, int, int);
 void wait(int);
 void clear();
-void moveDown(char**, int); 
+void moveDown(char**, int, int); 
 int main()
 {
     srand(time(NULL));
-    snow(10, 20, 10);
+    snow(30, 20, 10);
 } 
 void clear()
 {
@@ -34,14 +34,34 @@ void print(char** matrix, int height, int width)
         std::cout << '\n';
     }
 }
-void moveDown(char** matrix, int height)
+void moveDown(char** matrix, int height, int width)
 {
-    for (int i = height-1; i > 0 ; i--)
+    for (int i = height - 1; i > 0 ; i--)
     {
-        for (int j = 0; j < 20; j++)
+        if (i == (height - 1))
         {
-            matrix[i][j] = matrix[i - 1][j];
+            for (int j = 0; j < width; j++)
+            {
+                if (matrix[i - 1][j] == '*')
+                {
+                    matrix[i][j] = matrix[i - 1][j];
+                }
+
+            }
         }
+        else
+        {
+            for (int j = 0; j < width; j++)
+            {
+                matrix[i][j] = matrix[i - 1][j];
+            }
+        }
+      
+    }
+    
+    for (int i = 0; i < width; i++) //clear first row
+    {
+        matrix[0][i] = ' ';
     }
 
 }
@@ -58,28 +78,40 @@ void snow(int seconds, int width, int height)
             picture[i][width] = '\0';
     }
 
-    while(true)
+    for (int i = 0; i < seconds; i++)
     {
-        moveDown(picture, height);
+        moveDown(picture, height, width);
+        int counter = 0;
+  const int maxSnowflakes = width / 4;
+
         for (int k = 0; k < width; k++)
         {
             bool snowflake = rand() % 2; //random function - result 0 or 1
             if (snowflake)
             {
                 picture[0][k] = '*';
+                counter++;
             }
             else
             {
                 picture[0][k] = ' ';
+            }
+            if (counter == maxSnowflakes)
+            {
+                break;
             }
         }
        
         wait(1);
         clear();
         print(picture, height, width);
-    } 
+    }
+    for (int i = 0; i < height; i++)
+    {
+        delete[] picture[i];
+    }
+    delete[] picture; 
 } 
 
-// TODO: Snow @ the bottom
-//Less snowflakes
+//TODO: po ravnomerni snejinki
 
