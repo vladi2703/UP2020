@@ -1,4 +1,9 @@
 ﻿#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>     
+#include <time.h>
+#include <thread>        
+
 const int allNumbers = 9 * 8 * 7 * 6;
 
 void intToChar(int number, char* numberChar)
@@ -37,11 +42,15 @@ int countCows(char* secret, char* guess)
 	}
 	return cows;
 }
-void printArr(int* arr, int size)
+void printArr(int* arr, int size, int* nonZeroEl)
 {
 	for (int i = 0; i < size; i++)
 	{
-		std::cout << arr[i] << ' '; 
+		if(arr[i] != 0)
+		{ 
+			std::cout << arr[i] << ' ';
+			*nonZeroEl += 1;
+		}
 	}
 }
 void initializePossibleGuesses(int* arr)
@@ -72,10 +81,9 @@ void initializePossibleGuesses(int* arr)
 	}
 	
 }
-void eliminatePossibleGuess(int* arr, char* secret, int secretCows, int secretBulls)
+void eliminateImpossibleGuess(int* arr, char* secret, int secretCows, int secretBulls)
 {
 	char guess[4];
-
 	for (int i = 0; i < allNumbers; i++)
 	{
 		if (arr[i] == 0)
@@ -85,34 +93,91 @@ void eliminatePossibleGuess(int* arr, char* secret, int secretCows, int secretBu
 		intToChar(arr[i], guess);
 		int guessCows = countCows(secret, guess);
 		int guessBulls = countBulls(secret, guess);
-		if (guessCows != secretCows || guessBulls != guessCows)
+		if (guessCows != secretCows || guessBulls != secretBulls)
 		{
 			arr[i] = 0;
 		}
 	}
 }
-
-void getResult(int* cows, int* bulls, int* result)
+int randomGuess(int* arr)
 {
-	*cows = result[0];
-	*bulls = result[1];
+	int guess;
+	do
+	{
+		guess = rand() % allNumbers;
+	} while (arr[guess] == 0);
+	
+	return arr[guess]; 
+}
+void getResult(int* cows, int* bulls, const int* result)
+{
+	*bulls = result[0];
+	*cows = result[1];
+}
+void programataNaAsistentite(int* result, char* realSecret, char* guess)
+{
+	result[0] = countBulls(realSecret, guess);
+	result[1] = countBulls(realSecret, guess);
+}
+const int* tryGuess(int number)
+{
+
+	int result[2];
+	int realSecretNum = 1234;
+	char realSecret[4];
+	char numberChar[4];
+	intToChar(realSecretNum, realSecret);
+	intToChar(number, numberChar);
+	result[0] = countBulls(realSecret, numberChar);
+	result[1] = countCows(realSecret, numberChar);
+	return result; 
+
 }
 int main()
 {
+	srand(time(NULL));
+
 	int possibleGuess[allNumbers];
 	initializePossibleGuesses(possibleGuess);
-	
+	int countOfGuesses = 0; 
+	int turns = 0;
+
 	char secret[4];
 	char guess[4];
+	char realSecret[4];
 
-	int result[2];
+	const int* result;
 	int cows, bulls;
-
-	intToChar(2471, secret);
-	intToChar(2741, guess);
-
-	std::cout << countBulls(secret, guess) << ' ';
-	std::cout << countCows(secret, guess);
+	int secretNum;
+	int guessNum;
+	
+	secretNum = randomGuess(possibleGuess);
+	intToChar(secretNum, guess);
+	
+	
+	do
+	{
+		secretNum = randomGuess(possibleGuess);
+		result = tryGuess(secretNum);
+		bulls = result[0];
+		cows = result[1];
+		// getResult(&cows, &bulls, result);
+		intToChar(secretNum, secret);
+		eliminateImpossibleGuess(possibleGuess, secret, cows, bulls);
+		turns++;
+	} while (bulls != 4);
+	printArr(possibleGuess, allNumbers, &countOfGuesses); 
+	std::cout << "Count of turns: "<< turns;
 }
 
 //validation?
+/*
+1. first guess -> randomGuess(possibleGuess) 
+2. int* result = tryGuess(fistGuess) 
+3. getResult(result, cows, bulls);
+4. intToChar(firstGuess);
+5. eliminateImpossibleGuess(possibleGuess, secret, cows, bulls);
+
+
+
+*/
